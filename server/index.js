@@ -1,14 +1,17 @@
 const databaseReader = require("./src/outputs/postgres");
 const ws = require("./src/ws/server");
+const logger = require("./src/utils/logger");
+const { dataTypes } = require("./src/utils/constants");
+const notification = require("./src/services/notication");
 
 // Event listener for WebSocket server listening event
 ws.wss.on("listening", () => {
-  console.log("WebSocket server is listening on port 8081");
+  logger.info("WebSocket server is listening on port 8081");
 });
 
 // Function to handle errors when reading data from the database
 function handleDatabaseError(err) {
-  console.error("Error reading data from database:", err);
+  logger.error(`Error reading data from database: ${err}`);
 }
 
 // Function to fetch data from the database and send it to WebSocket clients
@@ -19,18 +22,16 @@ function fetchDataAndSend(type) {
       return;
     }
     ws.sendDataToClients(type, data);
+    notification.shouldSendNotication(type, data);
   });
 }
 
-// Initial fetch and send for each type of data
-const dataTypes = ["cpuUsage", "memoryUsage", "diskUsage", 'numberProcesses'];
-
-dataTypes.forEach((type) => {
+Object.keys(dataTypes).forEach((type) => {
   fetchDataAndSend(type);
 });
 
 const fetchInterval = setInterval(() => {
-  dataTypes.forEach((type) => {
+  Object.keys(dataTypes).forEach((type) => {
     fetchDataAndSend(type);
   });
 }, 2000);
@@ -38,6 +39,6 @@ const fetchInterval = setInterval(() => {
 // Cleanup function to clear interval when application exits
 process.on("SIGINT", () => {
   clearInterval(fetchInterval);
-  console.log("Exiting application");
+  logger.info("Exiting application");
   process.exit();
 });
