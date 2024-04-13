@@ -1,5 +1,7 @@
 # Project Overview
 
+**Note:** This project is still under development and may contain bugs. Further enhancements and improvements are planned for future releases.
+
 This project consists of two main sections: a client-side dashboard built with Vue3 and a server-side WebSocket server implemented in Node.js. The client dashboard connects to the WebSocket server to receive real-time data exported by Telegraf from a PostgreSQL database. Additionally, the server features a simple notification system that sends email alerts based on defined parameters.
 
 ## Client (client_v2)
@@ -67,17 +69,17 @@ NOTIFICATION_PROCESSES=100
 # Configure the PostgreSQL database connection parameters.
 DB_HOST="localhost"          # Hostname of the PostgreSQL server.
 DB_USER="postgres"           # Username for database authentication.
-DB_PASSWORD=""          # Password for the specified user.
+DB_PASSWORD="edgar"          # Password for the specified user.
 DB_PORT=5432                 # Port number on which PostgreSQL is running.
-DB_DATABASE=""  # Name of the database storing Telegraf data.
+DB_DATABASE="telegraf_data"  # Name of the database storing Telegraf data.
 DB_MAX_CLIENTS=10            # Maximum number of clients allowed to connect to the database.
 DB_CLOSE_AFTER=30000         # Time in milliseconds after which idle clients are closed.
 
 ####### EMAIL #######
 # Configure the SMTP server settings for sending email notifications.
-EMAIL_HOST=""     # Hostname of the SMTP server.
+EMAIL_HOST="smtp.mailtrap.io"     # Hostname of the SMTP server.
 EMAIL_PORT=2525                    # Port number for the SMTP server.
-EMAIL_USERNAME=""    # Username for SMTP authentication.
-EMAIL_PASSWORD=""    # Password for SMTP authentication.
-EMAIL_FROM="" # Email address from which notifications will be sent.
-EMAIL_TO=""   # Email address(es) to which notifications will be sent.
+EMAIL_USERNAME="a949f71592f966"    # Username for SMTP authentication.
+EMAIL_PASSWORD="a3a654afc7d387"    # Password for SMTP authentication.
+EMAIL_FROM="dev.e.jesus@gmail.com" # Email address from which notifications will be sent.
+EMAIL_TO="dev.e.jesus@gmail.com"   # Email address(es) to which notifications will be sent.
