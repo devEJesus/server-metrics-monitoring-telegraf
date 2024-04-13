@@ -1,0 +1,111 @@
+client_v2
+├── CHANGELOG.md
+├── LICENSE.md
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── demo
+│   │   │   ├── code.scss
+│   │   │   ├── demo.scss
+│   │   │   └── flags
+│   │   │       ├── flags.css
+│   │   │       └── flags_responsive.png
+│   │   ├── layout
+│   │   │   ├── _config.scss
+│   │   │   ├── _content.scss
+│   │   │   ├── _footer.scss
+│   │   │   ├── _main.scss
+│   │   │   ├── _menu.scss
+│   │   │   ├── _mixins.scss
+│   │   │   ├── _preloading.scss
+│   │   │   ├── _responsive.scss
+│   │   │   ├── _topbar.scss
+│   │   │   ├── _typography.scss
+│   │   │   ├── _utils.scss
+│   │   │   ├── _variables.scss
+│   │   │   └── layout.scss
+│   │   └── styles.scss
+│   ├── components
+│   │   ├── BlockViewer.vue
+│   │   └── chart
+│   │       └── TimeSeriesChart.vue
+│   ├── layout
+│   │   ├── AppConfig.vue
+│   │   ├── AppFooter.vue
+│   │   ├── AppLayout.vue
+│   │   ├── AppMenu.vue
+│   │   ├── AppMenuItem.vue
+│   │   ├── AppSidebar.vue
+│   │   ├── AppTopbar.vue
+│   │   └── composables
+│   │       └── layout.js
+│   ├── main.js
+│   ├── router
+│   │   └── index.js
+│   ├── service
+│   │   ├── CountryService.js
+│   │   ├── CustomerService.js
+│   │   ├── NodeService.js
+│   │   ├── PhotoService.js
+│   │   └── ProductService.js
+│   └── views
+│       ├── Dashboard copy.vue
+│       ├── Dashboard.vue
+│       ├── pages
+│       │   ├── Crud.vue
+│       │   ├── Empty.vue
+│       │   ├── Landing.vue
+│       │   ├── NotFound.vue
+│       │   ├── Timeline.vue
+│       │   └── auth
+│       │       ├── Access.vue
+│       │       ├── Error.vue
+│       │       └── Login.vue
+│       ├── uikit
+│       │   ├── Button.vue
+│       │   ├── Chart.vue
+│       │   ├── File.vue
+│       │   ├── FloatLabel.vue
+│       │   ├── FormLayout.vue
+│       │   ├── Input.vue
+│       │   ├── InvalidState.vue
+│       │   ├── List.vue
+│       │   ├── Media.vue
+│       │   ├── Menu.vue
+│       │   ├── Messages.vue
+│       │   ├── Misc.vue
+│       │   ├── Overlay.vue
+│       │   ├── Panels.vue
+│       │   ├── Table.vue
+│       │   ├── Tree.vue
+│       │   └── menu
+│       │       ├── ConfirmationDemo.vue
+│       │       ├── PaymentDemo.vue
+│       │       ├── PersonalDemo.vue
+│       │       └── SeatDemo.vue
+│       └── utilities
+│           ├── Blocks.vue
+│           ├── Documentation.vue
+│           └── Icons.vue
+├── vercel.json
+└── vite.config.js
+server
+├── index.js
+├── package-lock.json
+├── package.json
+└── src
+    ├── outputs
+    │   ├── file.js
+    │   └── postgres.js
+    ├── services
+    │   └── notication.js
+    ├── utils
+    │   ├── constants.js
+    │   ├── email.js
+    │   └── logger.js
+    └── ws
+        └── server.js
