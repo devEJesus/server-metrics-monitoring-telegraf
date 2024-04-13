@@ -3,6 +3,9 @@ import { onMounted, ref } from 'vue';
 
 var valCpu = ref('0.00%');
 var valMem = ref('0.00%');
+var valDisk = ref('0.00%');
+var valProcesses = ref('0');
+
 var ws = ref(null);
 var connected = ref(false);
 
@@ -79,7 +82,10 @@ onMounted(() => {
                 series.value[1].data.push({ x, y }); // Update MEM usage display
                 break;
             case 'diskUsage':
-                // Handle disk usage data
+                valDisk.value = data + '%';
+                break;
+            case 'numberProcesses':
+                valProcesses.value = data;
                 break;
             default:
                 break;
@@ -121,6 +127,32 @@ onMounted(() => {
                     </div>
                     <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width: 2.5rem; height: 2.5rem">
                         <font-awesome-icon icon="memory" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 lg:col-6 xl:col-3">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Disk</span>
+                        <div class="text-900 font-medium text-xl">{{ valDisk }}</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width: 2.5rem; height: 2.5rem">
+                        <font-awesome-icon icon="hard-drive" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 lg:col-6 xl:col-3">
+            <div class="card mb-0">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Processes</span>
+                        <div class="text-900 font-medium text-xl">{{ valProcesses }}</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width: 2.5rem; height: 2.5rem">
+                        <font-awesome-icon icon="gears" />
                     </div>
                 </div>
             </div>

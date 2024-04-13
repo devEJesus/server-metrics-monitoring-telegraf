@@ -7,9 +7,9 @@ import router from './router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faMemory, faMicrochip } from "@fortawesome/free-solid-svg-icons";
+import { faMemory, faMicrochip , faHardDrive, faGears } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faMemory, faMicrochip);
+library.add(faMemory, faMicrochip, faHardDrive, faGears);
 
 import PrimeVue from 'primevue/config';
 import AutoComplete from 'primevue/autocomplete';

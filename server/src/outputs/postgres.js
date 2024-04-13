@@ -1,13 +1,14 @@
 const { Pool } = require("pg");
+require("dotenv").config();
 
 const pool = new Pool({
-  user: "postgres",
-  password: "edgar",
-  host: "localhost",
-  port: 5432,
-  database: "telegraf_data",
-  max: 10, // Maximum number of clients in the pool
-  idleTimeoutMillis: 30000, // Close idle clients after 30 seconds
+  user: process.env.DB_USER ?? "root",
+  password: process.env.DB_PASSWORD ?? "",
+  host: process.env.DB_HOST ?? "localhost",
+  port: process.env.DB_PORT ?? "5432",
+  database: process.env.DB_DATABASE ?? "telegraf_data",
+  max: process.env.DB_MAX_CLIENTS ?? 10, // Maximum number of clients in the pool
+  idleTimeoutMillis: process.env.DB_CLOSE_AFTER ?? 30000, // Close idle clients after 30 seconds
 });
 
 async function readCPUUsageFromDatabase(callback) {
@@ -39,7 +40,31 @@ async function readMemoryUsageFromDatabase(callback) {
 }
 
 async function readDiskUsageFromDatabase(callback) {
-  // Add logic to query disk usage from the database
+  const client = await pool.connect(); // Get a client from the pool
+  try {
+    const query = `SELECT "used_percent"  * 100 used_disk FROM disk ORDER BY time DESC LIMIT 1`;
+    const result = await client.query(query);
+    callback(null, result.rows[0].used_disk.toFixed(2));
+  } catch (err) {
+    console.error("Error executing Disk query:", err);
+    callback(err, null);
+  } finally {
+    client.release(); // Release the client back to the pool
+  }
+}
+
+async function readNumberProcessesFromDatabase(callback) {
+  const client = await pool.connect(); // Get a client from the pool
+  try {
+    const query = `SELECT total FROM processes ORDER BY time DESC LIMIT 1`;
+    const result = await client.query(query);
+    callback(null, result.rows[0].total);
+  } catch (err) {
+    console.error("Error executing Processes query:", err);
+    callback(err, null);
+  } finally {
+    client.release(); // Release the client back to the pool
+  }
 }
 
 async function readDataFromDatabase(type, callback) {
@@ -52,6 +77,9 @@ async function readDataFromDatabase(type, callback) {
       break;
     case "diskUsage":
       readDiskUsageFromDatabase(callback);
+      break;
+    case "numberProcesses":
+      readNumberProcessesFromDatabase(callback);
       break;
     default:
       callback(new Error("Invalid data type"), null);
