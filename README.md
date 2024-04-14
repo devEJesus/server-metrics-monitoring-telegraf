@@ -77,7 +77,7 @@ DB_CLOSE_AFTER=30000         # Time in milliseconds after which idle clients are
 
 ####### EMAIL #######
 # Configure the SMTP server settings for sending email notifications.
-EMAIL_HOST="smtp.mailtrap.io"     # Hostname of the SMTP server.
+EMAIL_HOST=""     # Hostname of the SMTP server.
 EMAIL_PORT=2525                    # Port number for the SMTP server.
 EMAIL_USERNAME=""    # Username for SMTP authentication.
 EMAIL_PASSWORD=""    # Password for SMTP authentication.
