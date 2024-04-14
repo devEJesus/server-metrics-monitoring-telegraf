@@ -69,9 +69,9 @@ NOTIFICATION_PROCESSES=100
 # Configure the PostgreSQL database connection parameters.
 DB_HOST="localhost"          # Hostname of the PostgreSQL server.
 DB_USER="postgres"           # Username for database authentication.
-DB_PASSWORD="edgar"          # Password for the specified user.
+DB_PASSWORD=""          # Password for the specified user.
 DB_PORT=5432                 # Port number on which PostgreSQL is running.
-DB_DATABASE="telegraf_data"  # Name of the database storing Telegraf data.
+DB_DATABASE=""  # Name of the database storing Telegraf data.
 DB_MAX_CLIENTS=10            # Maximum number of clients allowed to connect to the database.
 DB_CLOSE_AFTER=30000         # Time in milliseconds after which idle clients are closed.
 
@@ -79,7 +79,7 @@ DB_CLOSE_AFTER=30000         # Time in milliseconds after which idle clients are
 # Configure the SMTP server settings for sending email notifications.
 EMAIL_HOST="smtp.mailtrap.io"     # Hostname of the SMTP server.
 EMAIL_PORT=2525                    # Port number for the SMTP server.
-EMAIL_USERNAME="a949f71592f966"    # Username for SMTP authentication.
-EMAIL_PASSWORD="a3a654afc7d387"    # Password for SMTP authentication.
-EMAIL_FROM="dev.e.jesus@gmail.com" # Email address from which notifications will be sent.
-EMAIL_TO="dev.e.jesus@gmail.com"   # Email address(es) to which notifications will be sent.
+EMAIL_USERNAME=""    # Username for SMTP authentication.
+EMAIL_PASSWORD=""    # Password for SMTP authentication.
+EMAIL_FROM="" # Email address from which notifications will be sent.
+EMAIL_TO=""   # Email address(es) to which notifications will be sent.
